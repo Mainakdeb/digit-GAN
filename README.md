@@ -5,3 +5,46 @@
 <img src="https://github.com/Mainakdeb/digit-GAN/blob/main/images_and_gifs/digit-demo.gif" width="510">
 
 Generate images of hand-written digits using GANs
+
+## Well, How does it work?
+Two neural networks, the Generator(G) and the Discriminator(D) are pitted against one another and trained simultaneously. But what are they aiming to accomplish?
+  * The **Discriminator** aims to distinguish between real and generated samples. 
+  * The **Generator** aims to produce real-looking samples/images to fool the Discriminator.
+
+In simple terms, the Generator is like an art-forger who is trying to sharpen its skills, and the Discriminator is like an art-expert which the generator wants to fool.
+
+## The Math
+The 2 networks are trained in a minimax game formulation:
+
+<img src="https://github.com/Mainakdeb/digit-GAN/blob/main/images_and_gifs/minmax.png" width="510">
+
+1. x represents a real sample.
+2. z is random vector in the latent space, or lets just say random noise. 
+3. D(x) is the discriminator output for a real sample x.
+4. G(z) is the generated output from the generator net with noise z given as input.
+5. D(G(z)) is the discriminator output for generated fake data G(z).
+5. E represents the expected value or the average.
+
+
+* The **Discriminator** wants to make sure D(x) is close to 1 and D(G(x)) is close to 0. It attempts to maximise the following objective.
+<img src="https://github.com/Mainakdeb/digit-GAN/blob/main/images_and_gifs/discriminator_objective.png" width="510">
+
+* The **Generator** wants to make sure D(G(z)) is close to 1 i.e. fool the discriminator into thinking  generated G(z) is real. It attempts to minimise the following objective.
+<img src="https://github.com/Mainakdeb/digit-GAN/blob/main/images_and_gifs/generator_objective_weak_grad.png" width="310">
+
+But in practice, optimizing this generator objective does not work well because it has vanishing gradients early on. So instead, people use a different objective function as shown below:
+
+<img src="https://github.com/Mainakdeb/digit-GAN/blob/main/images_and_gifs/generator_objective_practical.png" width="280">
+
+This(green line) has a higher gradient signal for bad samples i.e. towards the left, hence the model learns more in region of bad samples. The purple line is almost flat (weak gradients) towards the left, which is not suitable for training.
+
+<img src="https://github.com/Mainakdeb/digit-GAN/blob/main/images_and_gifs/weak_grad_vs_strong_grad.png" width="490">
+
+
+## If all goes well:
+The Generator generates samples indistinguishable from real samples. And the discriminator is forced to guess (with a probability of ½).
+
+Most of what I've learned are from the following sources:
+1. [This lecture](https://www.youtube.com/watch?v=5WoItGTWV54&ab_channel=StanfordUniversitySchoolofEngineering) by Fei Fei Li in Generative nets.
+2. The [DCGAN paper](https://arxiv.org/abs/1511.06434) by Alec Radford, Luke Metz, Soumith Chintala.
+3. [Generative Adversarial](https://arxiv.org/abs/1406.2661) Networks by Ian Goodfellow et al.
