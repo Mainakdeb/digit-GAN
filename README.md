@@ -45,6 +45,6 @@ This(green line) has a higher gradient signal for bad samples i.e. towards the l
 The Generator generates samples indistinguishable from real samples. And the discriminator is forced to guess (with a probability of ½).
 
 Most of what I've learned are from the following sources:
-1. [This lecture](https://www.youtube.com/watch?v=5WoItGTWV54&ab_channel=StanfordUniversitySchoolofEngineering) by Fei Fei Li in Generative nets.
+1. [This lecture](https://www.youtube.com/watch?v=5WoItGTWV54&ab_channel=StanfordUniversitySchoolofEngineering) by Serena Yeung on Generative nets.
 2. The [DCGAN paper](https://arxiv.org/abs/1511.06434) by Alec Radford, Luke Metz, Soumith Chintala.
 3. [Generative Adversarial](https://arxiv.org/abs/1406.2661) Networks by Ian Goodfellow et al.
