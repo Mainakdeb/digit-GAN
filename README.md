@@ -47,4 +47,4 @@ The Generator generates samples indistinguishable from real samples. And the dis
 Most of what I've learned are from the following sources:
 1. [This lecture](https://www.youtube.com/watch?v=5WoItGTWV54&ab_channel=StanfordUniversitySchoolofEngineering) by Serena Yeung on Generative nets.
 2. The [DCGAN paper](https://arxiv.org/abs/1511.06434) by Alec Radford, Luke Metz, Soumith Chintala.
-3. [Generative Adversarial](https://arxiv.org/abs/1406.2661) Networks by Ian Goodfellow et al.
+3. [Generative Adversarial Networks](https://arxiv.org/abs/1406.2661) by Ian Goodfellow et al.
